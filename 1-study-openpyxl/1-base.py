@@ -20,6 +20,7 @@ print(excel.properties)
 
 print("-------------------sheet---------------------")
 sheet = excel.worksheets[0]
+sheet1 = excel.get_sheet_by_name("xx")
 # sheet标题：学校账单批次模板
 print(sheet.title)
 # 行、列数
