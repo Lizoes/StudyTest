@@ -38,6 +38,7 @@ if __name__ == '__main__':
     projectPath = os.path.abspath(os.path.join(os.getcwd(), ".."))
     config = ConfigParser()
     config.read(projectPath + r"\conf\config.ini", encoding='utf-8-sig')
+    print(type(config))
     section, option = 'people', 'nationality'
     try:
         nationality = config.get(section=section, option=option)
