@@ -1,0 +1,2 @@
+[2021-02-18 20:47:43] [ERROR   ] - this is ERROR message (1-loggingBase.py:118)
+[2021-02-18 20:47:43] [CRITICAL] - this is CRITICAL message (1-loggingBase.py:119)

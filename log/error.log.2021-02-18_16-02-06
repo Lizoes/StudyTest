@@ -1,0 +1,2 @@
+2021-02-18 16:02:06 - ERROR - 1-loggingBase.py[:117] - this is ERROR message
+2021-02-18 16:02:06 - CRITICAL - 1-loggingBase.py[:118] - this is CRITICAL message
