@@ -8,6 +8,7 @@ TestReport：生成测试报告
 '''
 
 '''
+断言
 self.assertEqual(a, b, msg)      a == b    msg为断言失败的提示信息，以下类似
 self.assertNotEqual(a, b)        a != b
 self.assertTrue(x)               bool(x) is True
@@ -22,22 +23,56 @@ self.assertIsInstance(a, b)      isinstance(a, b)
 self.assertNotIsInstance(a, b)   not isinstance(a, b)
 '''
 
+'''
+# 启动
+1、这种方法，启动时会执行所有满足条件的测试用例，执行顺序为方法名字按照ASCII排序
+unittest.main()
+2、执行添加的测试用例，执行的顺序为添加的顺序
+testSuite = unittest.TestSuite()
+testCaseList = [WJFTestCase(methodName='test_1'), WJFTestCase(methodName='test_2')]
+# 添加多个
+testSuite.addTests(testCaseList)   
+# 添加单个
+testSuite.addTest(WJFTestCase(methodName='test_3'))
+unittest.TextTestRunner().run(testSuite)
+3、
+suite = unittest.TestLoader().loadTestsFromTestCase(WJFTestCase)
+testSuite = unittest.TestSuite(suite)
+unittest.TextTestRunner().run(testSuite)
+
+4、
+discover = unittest.defaultTestLoader.discover(start_dir="./", pattern="xx.py")
+runner = unittest.TextTestRunner()
+runner.run(discover)
+'''
 import unittest
+from . import ddt
+
+
+
+
 
 
 class WJFTestCase(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        print("setUpClass")
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        print("tearDownClass")
+
     def setUp(self):
         print("setUp")
 
     def tearDown(self):
         print("tearDown")
 
-    def test_2(self):
-        print("test_2")
-
     def test_1(self):
         print("test_1")
 
+    def test_2(self):
+        print("test_2")
 
 
     @unittest.skip
@@ -51,20 +86,7 @@ class WJFTestCase(unittest.TestCase):
 unittest.main()
 
 
-'''
-# 启动
-1、这种方法，启动时会执行所有满足条件的测试用例，执行顺序为方法名字按照ASCII排序
-unittest.main()
-2、执行添加的测试用例，执行的顺序为添加的顺序
-testSuite = unittest.TestSuite()
-testCaseList = [WJFTestCase(methodName='test_1'), WJFTestCase(methodName='test_2')]
-testSuite.addTests(testCaseList)
-unittest.TextTestRunner().run(testSuite)
-3、
-suite = unittest.TestLoader().loadTestsFromTestCase(WJFTestCase)
-testSuite = unittest.TestSuite(suite)
-unittest.TextTestRunner().run(testSuite)
-'''
+
 
 '''
 configerparser

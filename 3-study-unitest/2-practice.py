@@ -1,8 +1,17 @@
 import unittest, os
 from configparser import ConfigParser
+from . import ddt
 
 
 class WJFTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        print("setUpClass")
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        print("tearDownClass")
+
     def setUp(self):
         print("setUp")
 
